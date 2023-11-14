@@ -1,0 +1,135 @@
+.hero-logo {
+    max-width: 100%; /* Ensures the image doesn't exceed its natural size */
+    height: auto; /* Allows the image to scale proportionally */
+    display: block; /* Removes any default inline spacing */
+    margin-bottom: 10px; /* Adjust the margin as needed */
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+}
+
+.nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.nav-item {
+    margin-right: 20px; /* Adjust spacing between nav items */
+}
+
+.nav-item a {
+    text-decoration: none;
+    color: red; /* Adjust color as needed */
+    font-weight: bold;
+    font-size: 16px; /* Adjust font size as needed */
+}
+
+/* Add styles for active or hover states as needed */
+.yeo-team {
+    text-align: center;
+    border-bottom: 1px solid #eee;
+    padding: 3rem 0;
+    background: #f7f7f7;
+}
+
+.feature-title {
+    font-weight: 200;
+    font-size: 1rem;
+    padding: 0.5rem 0 0.5rem 0;
+    opacity: .5;
+    text-align: center;
+    display: inline-block;
+    border-bottom: 1px solid #bcb9b9;
+    margin: 0 auto 2rem;
+}
+
+.columns {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.column {
+    flex: 0 0 calc(30% - 2rem); /* Adjust the width of each person's container and add margin */
+    max-width: calc(30% - 2rem); /* Adjust the width of each person's container and add margin */
+    margin: 1rem; /* Add margin for spacing between team members */
+}
+
+.team-member {
+    text-align: center;
+}
+
+.s-circle-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #3498db;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    overflow: hidden;
+    margin-bottom: 1rem; /* Add margin for spacing between the circular frames */
+}
+
+.s-circle {
+    border-radius: 50%;
+    max-width: 100%;
+    height: auto;
+}
+
+.member-info {
+    margin-top: 1rem; /* Add margin between the image and member information */
+}
+
+.name {
+    display: block;
+    font-weight: bold;
+    margin: 0.5rem 0;
+}
+
+.title {
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.hero-button {
+    background-color: red;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.hero-button:hover {
+    background-color: darkred;
+}
+
+.logo-image {
+    width: 50px; /* Adjust the width according to your design */
+    height: auto; /* Maintain aspect ratio */
+    display: block;
+    margin-right: 20px; /* Adjust the margin as needed */
+}
+
+.team-member {
+    position: relative;
+}
+
+.social-links {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+}
+
+.social-links img {
+    width: 30px; /* Adjust the width according to your design */
+    margin-right: 10px; /* Adjust the margin between logos */
+}
