@@ -15,12 +15,12 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/$
 
 // Configuración de Firebase (utiliza tus propias credenciales)
 const firebaseConfig = {
-  apiKey: "AIzaSyCdkrQIjyr12ETbAvM9HsYcCyFqSzHxJiU",
-  authDomain: "bloodiq-da1ea.firebaseapp.com",
-  projectId: "bloodiq-da1ea",
-  storageBucket: "bloodiq-da1ea.appspot.com",
-  messagingSenderId: "773607312101",
-  appId: "1:773607312101:web:30ae564355d79765b2220c"
+  apiKey: "API Key",
+  authDomain: "URL",
+  projectId: "ID",
+  storageBucket: "Bucket",
+  messagingSenderId: "Sender ID",
+  appId: "API ID"
 };
 
 // Inicializa Firebase
