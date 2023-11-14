@@ -4,12 +4,12 @@ import { getAuth } from "firebase/auth";
 import axios from "axios";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCdkrQIjyr12ETbAvM9HsYcCyFqSzHxJiU",
-  authDomain: "bloodiq-da1ea.firebaseapp.com",
-  projectId: "bloodiq-da1ea",
-  storageBucket: "bloodiq-da1ea.appspot.com",
-  messagingSenderId: "773607312101",
-  appId: "1:773607312101:web:30ae564355d79765b2220c"
+  apiKey: "API Key",
+  authDomain: "URL",
+  projectId: "ID",
+  storageBucket: "Bucket",
+  messagingSenderId: "ID",
+  appId: "ID"
 };
 
 // Inicializa Firebase
