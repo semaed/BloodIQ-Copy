@@ -99,5 +99,5 @@ This project is currently in development. We are actively adding new features an
 - <img src="https://github.com/semaed/BloodIQ-Copy/blob/main/Languages%20Icons/Logo.jpeg" alt="Eduardo Figueroa" width="30" height="30"/> <a href="https://github.com/semaed" target="_blank">Eduardo Figueroa</a>
 - <img src="https://github.com/semaed/BloodIQ-Copy/blob/main/Languages%20Icons/Logo.jpeg" alt="Xavier Betancourt" width="30" height="30"/> <a href="https://github.com/Xespinosa" target="_blank">Xavier Betancourt</a>
 - <img src="https://github.com/semaed/BloodIQ-Copy/blob/main/Languages%20Icons/Logo.jpeg" alt="Giovanni Barreto" width="30" height="30"/> <a href="https://github.com/gbc6292" target="_blank">Giovanni Barreto</a>
-hola
+
 [Back to Top](#top)
