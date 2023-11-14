@@ -7,7 +7,7 @@ cred = credentials.Certificate('firebase_sdk.json')
 
 # initiliazing our app
 firebase_admin.initialize_app(cred, {
-    'databaseURL': 'https://bloodiq-da1ea-default-rtdb.firebaseio.com/'
+    'databaseURL': 'DB URRL'
 })
 
 # add data to database
