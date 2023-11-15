@@ -33,11 +33,36 @@ It's designed to assist both medical professionals and patients in quick and acc
 ## **💽Project**
 
 ### **🗃Description of each file**
-- `compare_ranges.py` Compares blood test results with predefined ranges and classifies them as high, low, or normal.
-- `firebase_db.py`: Handles Firebase database operations, including initializing the database and retrieving data.
-- `imageCapture.py`: Converts PDFs to images or captures images from a camera, processes them to extract text data.
-- `json_to_dict.py`: Loads data from a JSON file, used for reading predefined medical ranges.
-- `numberExtract.py`: Extracts numerical values from processed text and interprets them using OpenAI's GPT-3.5.
+- `pending.jsx`: A React component for capturing pictures using a webcam, uploading files, and sending them to a server with Axios.
+- `firebase.config.jsx`: Configures Firebase for a React application, including Firebase Authentication.
+- `CreateAccount.jsx`: React component for user account creation, displaying a registration form and integrating with Firebase.
+- `Home.jsx`: React home page component with a welcome message and a link to the login page.
+- `LoadingResults.jsx`: React component displaying a loading animation using `styled-components` and `ClockLoader`.
+- `Login.jsx`: React login component with a form for user authentication using Firebase.
+- `Results.jsx`: Displays blood test results, including a PDF document viewer, in a React component.
+- `TestProvider.jsx`: Manages uploading and analyzing blood test results, file uploads, and displays a loading indicator during processing.
+- `firebase.config.jsx` (Second Instance): Similar to the first `firebase.config.jsx` but with additional Axios configuration using Firebase authentication tokens.
+- `LoginForm.jsx`: React component for the login form, handling authentication via Firebase.
+- `RegistrationForm.jsx`: React registration form component, managing new user registration with Firebase.
+- `style.css`: CSS stylesheet with common styles for forms, buttons, and UI elements.
+- `Disclaimer.jsx`: React component for displaying a disclaimer message using `styled-components`.
+- `Logo.jsx` and `Logo_[2-4].jsx`: React components for displaying different versions of a logo using `styled-components`.
+- `AuthContext.jsx`: React context file for authentication state and logic.
+- `routes.jsx`: Defines React application routing, including private and public routes.
+- `App.css`: Main application stylesheet for global styles and theming.
+- `App.jsx`: Main React component that includes routing and wraps around the application.
+- `main.jsx`: Entry point for the React application, setting up the React DOM, routing, and Firebase context.
+- `app.py`: Python Flask app for file upload endpoints and processing blood test results.
+- `bloodiqjson.json`: JSON file with reference ranges for blood test parameters.
+- `compare_ranges.py`: Python script to compare blood test results with reference ranges.
+- `firebase_db.py`: Python script for Firebase database interactions, including data reading and writing.
+- `firebase_sdk.json`: Firebase SDK credentials configuration file.
+- `imageCapture.py`: Python script for capturing and processing images from a PDF or webcam for text extraction.
+- `json_to_dict.py`: Python utility script to load JSON data into a dictionary.
+- `numberExtract.py`: Extracts numbers from images, compares with reference ranges, and generates responses using OpenAI's GPT-3.
+- `start.py`: Python Flask script to initialize the web application.
+- `testFile.py`: Python script defining a parent class with properties used for calling the correct file.
+
 
 [Back to Top](#top)
 
