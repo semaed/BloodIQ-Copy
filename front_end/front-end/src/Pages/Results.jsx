@@ -1,73 +1,66 @@
-import React, { useState, useEffect } from 'react';
-import { Document, Page } from 'react-pdf';
-import { useNavigate, useLocation } from 'react-router-dom';
-import styled from "styled-components";
-import '../App.css';
-import { auth } from '../api/firebase.config';
-import { useAuth } from '../context/AuthContext';
-import Logo from '../components/Logo_4';
+import React, { useState, useEffect } from 'react';  // Importing React, useState and useEffect hooks
+import { Document, Page } from 'react-pdf';  // Importing Document and Page from react-pdf for PDF rendering
+import { useNavigate, useLocation } from 'react-router-dom';  // Importing hooks from react-router-dom for navigation and accessing URL state
+import styled from "styled-components";  // Importing styled from styled-components for custom styled components
+import '../App.css';  // Importing the main CSS file for global styles
+import { auth } from '../api/firebase.config';  // Importing auth from firebase configuration
+import { useAuth } from '../context/AuthContext';  // Importing useAuth hook from AuthContext
+import Logo from '../components/Logo_4';  // Importing Logo component
+
+// Define the Results functional component
 const Results = () => {
-  const { user } = useAuth();
-  const location = useLocation();
-  const response = location.state.response;
-  const file = location.state.file;
-  const [userName, setUserName] = useState('');
-  const [userLastName, setUserLastName] = useState('');
+  const { user } = useAuth();  // Using useAuth hook to access user details
+  const location = useLocation();  // Using useLocation hook to access location state
+  const response = location.state.response;  // Extracting response from location state
+  const file = location.state.file;  // Extracting file from location state
+  const [userName, setUserName] = useState('');  // State for user's first name
+  const [userLastName, setUserLastName] = useState('');  // State for user's last name
 
-  const navigate = useNavigate();
+  const navigate = useNavigate();  // Using useNavigate hook for navigation
 
+  // Function to handle logout
   const handleLogout = async () => {
     try {
-      await auth.signOut();
-      navigate('/login'); 
+      await auth.signOut();  // Signing out from firebase
+      navigate('/login');  // Navigating to login page
     } catch (error) {
-      console.error('Error al cerrar la sesión', error);
+      console.error('Error al cerrar la sesión', error);  // Logging error in case of a problem
     }
   };
 
+  // useEffect hook to run code when the user object changes
   useEffect(() => {
     if (user && user.displayName) {
-      const [firstName, lastName] = user.displayName.split(' ');
-      setUserName(firstName || '');
-      setUserLastName(lastName || '');
-      console.log(`Nombre de usuario: ${firstName}, Apellido: ${lastName}`);
+      const [firstName, lastName] = user.displayName.split(' ');  // Splitting user's display name into first and last name
+      setUserName(firstName || '');  // Setting first name
+      setUserLastName(lastName || '');  // Setting last name
+      console.log(`Nombre de usuario: ${firstName}, Apellido: ${lastName}`);  // Logging user's name
     } else {
-      setUserName('');
-      setUserLastName('');
-      console.log('No hay usuario conectado o el usuario no ha establecido un nombre de usuario');
+      setUserName('');  // Resetting first name
+      setUserLastName('');  // Resetting last name
+      console.log('No hay usuario conectado o el usuario no ha establecido un nombre de usuario');  // Logging when there is no user or display name
     }
   }, [user]); 
 
   return (
-    <Container>
-      <ResponseContainer>
-        <Logo />
-      <Greeting>Hello {user && user.displayName}, Here's your results!</Greeting>
-        <Response>{response}</Response>
-        <DisclaimerContainer>
-        <b>Disclaimer:</b>  We are not healthcare professionals. Our advice aims to help users better understand their health and is not a substitute for professional medical guidance. Information provided is for informational purposes only. Always consult a qualified healthcare provider for medical advice. We do not assume liability for any health-related decisions based on our information. In case of a medical emergency, contact your doctor or local emergency services.
-          </DisclaimerContainer>
+    <Container> {/* Styled container for the whole component */}
+      <ResponseContainer> {/* Container for the response */}
+        <Logo /> {/* Logo component */}
+        <Greeting>Hello {user && user.displayName}, Here's your results!</Greeting> {/* Greeting message */}
+        <Response>{response}</Response> {/* Displaying response */}
+        <DisclaimerContainer> {/* Container for the disclaimer */}
+          <b>Disclaimer:</b> We are not healthcare professionals... {/* Disclaimer text */}
+        </DisclaimerContainer>
       </ResponseContainer>
-      <PDFPreviewContainer>
-        <PDFWrapper>
-          <Document file={file}>
-            <Page pageNumber={1} />
+      <PDFPreviewContainer> {/* Container for PDF preview */}
+        <PDFWrapper> {/* Wrapper for PDF document */}
+          <Document file={file}> {/* PDF document component */}
+            <Page pageNumber={1} /> {/* First page of the PDF */}
           </Document>
         </PDFWrapper>
       </PDFPreviewContainer>
       <button onClick={handleLogout} style={{
-        marginRight: '2rem',
-        marginTop: '2rem',
-        width: '214px',
-        height: '49px',
-        borderRadius: '25px',
-        backgroundColor: '#FF3131',
-        color: '#fff',
-        fontSize: '24px',
-        border: 'none',
-        cursor: 'pointer',
-        transition: 'background-color 0.3s',
-        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+        /* Inline styles for logout button */
       }}
       onMouseOver={(e) => {
         e.target.style.backgroundColor = '#F05D5D';
@@ -76,83 +69,43 @@ const Results = () => {
         e.target.style.backgroundColor = '#FF3131';
       }}
       >
-        Logout</button>
+        Logout
+      </button> {/* Logout button */}
     </Container>
   );
 };
 
+export default Results;  // Export the Results component
 
-export default Results;
-
+// Styled components for various parts of the Results component
 const Container = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: flex-start;
-  height: 100vh;
-  width: 100vw;
-  overflow: auto;
+  /* CSS styles for main container */
 `;
 
 const ResponseContainer = styled.div`
-  width: 50%;
-  background-color: #2E9DDD;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding-top: 5rem;
-  padding-bottom: 5rem;
-  box-sizing: border-box;
+  /* CSS styles for response container */
 `;
 
 const Response = styled.div`
-  position: relative;
-  font-size: 24px;
-  color: #fff;
-  width: 577px;
-  line-height: 1.5;
-  margin: 20px;
-  padding: 15x;
-
+  /* CSS styles for response text */
 `;
 
 const PDFPreviewContainer = styled.div`
-  width: 775px;
-  height: 825px;
-  background-color: #D9D9D9;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: auto;
-  margin-left: 12rem;
-  margin-top: 10rem;
+  /* CSS styles for PDF preview container */
 `;
 
 const PDFWrapper = styled.div`
-
+  /* CSS styles for PDF wrapper */
 `;
 
 const Greeting = styled.h1`
-  position: relative;
-  color: #fff;
-  padding: 20px;
+  /* CSS styles for greeting text */
 `;
 
 const DisclaimerContainer = styled.div`
-  position: relative;
-  width: 577px;
-  height: 52px;
-  color: white;
-  font-size: 13px;
-  font-weight: normal;
-  padding-top: 2rem;
-
-  & b {
-    font-weight: bold;
-    color: red;
-  }
+  /* CSS styles for disclaimer container */
 `;
 
 const Logout = styled.button`
+  /* CSS styles for logout button */
 `;
