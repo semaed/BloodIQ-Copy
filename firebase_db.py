@@ -1,19 +1,19 @@
-import firebase_admin
-from firebase_admin import credentials
-from firebase_admin import db
+import firebase_admin  # Import the firebase_admin module for Firebase functionality
+from firebase_admin import credentials  # Import credentials sub-module for authentication
+from firebase_admin import db  # Import db sub-module for database interaction
 
-# credentials of our json file
-cred = credentials.Certificate('firebase_sdk.json')
+# Fetch and use credentials from a JSON file for Firebase authentication
+cred = credentials.Certificate('firebase_sdk.json')  # Load Firebase credentials from a JSON file
 
-# initiliazing our app
+# Initialize the Firebase application with the specified credentials and database URL
 firebase_admin.initialize_app(cred, {
-    'databaseURL': 'DB URRL'
+    'databaseURL': 'DB URL'  # Placeholder for the Firebase database URL
 })
 
-# add data to database
+# The commented section below is for adding data to the Firebase database
 """
-ref = db.reference('/')
-ref.set({
+ref = db.reference('/')  # Get a reference to the root of the Firebase database
+ref.set({  # Set or update data at the reference
     'BASOPHILS': {
         'high_range': 1,
         'low_range': 0
@@ -99,15 +99,15 @@ ref.set({
         'high_range': 10,
         'low_range': 4
     }
-})"""
+})
+"""
 
-
+# Function to retrieve data from Firebase for a given key
 def get_data_from_firebase(data_key):
-    ref = db.reference(data_key)
-    return ref.get()
+    ref = db.reference(data_key)  # Create a database reference for the specified key
+    return ref.get()  # Retrieve and return the data from Firebase
 
-
-# Example usage
-data_key = 'BASOPHILS'
-result = get_data_from_firebase(data_key)
-print(result)
+# Example usage of the function
+data_key = 'BASOPHILS'  # Defining a key to retrieve data for
+result = get_data_from_firebase(data_key)  # Retrieving data from Firebase
+print(result)  # Printing the retrieved data
