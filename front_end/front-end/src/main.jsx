@@ -1,19 +1,19 @@
-// main.jsx (o el nombre de tu archivo principal)
-import React from 'react';
-import ReactDOM from 'react-dom/client'; // Cambiamos la importación aquí
-import { BrowserRouter } from 'react-router-dom';
-import { AuthProvider } from './context/AuthContext';
-import AppRoutes from './routers/routes';
+import React from 'react';  // Importing React for using JSX
+import ReactDOM from 'react-dom/client';  // Importing ReactDOM from react-dom/client for rendering
+import { BrowserRouter } from 'react-router-dom';  // Importing BrowserRouter for handling routing
+import { AuthProvider } from './context/AuthContext';  // Importing AuthProvider for authentication context
+import AppRoutes from './routers/routes';  // Importing AppRoutes for routing configuration
 
-// Importa Firebase y sus módulos necesarios con exportaciones por nombre
-import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
+// Import Firebase and its necessary modules using named imports
+import { initializeApp } from 'firebase/app';  // Importing initializeApp to initialize Firebase
+import { getAuth } from 'firebase/auth';  // Importing getAuth for authentication
 
-import { pdfjs } from 'react-pdf';
+import { pdfjs } from 'react-pdf';  // Importing pdfjs from react-pdf for PDF handling
 
+// Setting the PDF worker source for react-pdf
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
-// Configuración de Firebase (utiliza tus propias credenciales)
+// Firebase configuration (use your own credentials)
 const firebaseConfig = {
   apiKey: "API Key",
   authDomain: "URL",
@@ -23,17 +23,19 @@ const firebaseConfig = {
   appId: "API ID"
 };
 
-// Inicializa Firebase
-const firebaseApp = initializeApp(firebaseConfig);
-const auth = getAuth(firebaseApp);
+// Initialize Firebase
+const firebaseApp = initializeApp(firebaseConfig);  // Initializing Firebase with the config
+const auth = getAuth(firebaseApp);  // Getting the auth instance from Firebase
 
-const root = ReactDOM.createRoot(document.getElementById('root')); // Cambiamos la creación del nodo raíz aquí
+// Creating the root element using ReactDOM
+const root = ReactDOM.createRoot(document.getElementById('root'));
 
+// Rendering the application
 root.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <AuthProvider>
-        <AppRoutes />
+  <React.StrictMode>  {/* Wrapping the application in StrictMode for catching potential problems */}
+    <BrowserRouter>  {/* Wrapping the application in BrowserRouter for routing */}
+      <AuthProvider>  {/* Providing the authentication context */}
+        <AppRoutes />  {/* Rendering the AppRoutes component */}
       </AuthProvider>
     </BrowserRouter>
   </React.StrictMode>
