@@ -1,33 +1,37 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-import './style.css';
+import React, { useState } from 'react';  // Importing React and the useState hook
+import { useNavigate } from 'react-router-dom';  // Importing useNavigate for navigation
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';  // Importing Firebase authentication functions
+import './style.css';  // Importing CSS styles
 
+// Define LoginForm as a functional component
 const LoginForm = () => {
-  const navigate = useNavigate();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const navigate = useNavigate();  // Initializing navigate for programmatic navigation
+  const [email, setEmail] = useState('');  // State for storing the email input
+  const [password, setPassword] = useState('');  // State for storing the password input
 
+  // Function to handle the login process
   const handleLogin = async (e) => {
-    e.preventDefault(); // Evitar que el formulario se envíe automáticamente.
+    e.preventDefault(); // Prevents the form from submitting traditionally
 
     try {
-      const auth = getAuth();
+      const auth = getAuth();  // Getting the Firebase auth instance
 
-      // Inicia sesión utilizando Firebase
+      // Using Firebase to sign in with email and password
       await signInWithEmailAndPassword(auth, email, password);
 
-      // Usuario autenticado con éxito, puedes redirigirlo a la página deseada
+      // Navigates to TestProvider page upon successful login
       navigate('/TestProvider');
     } catch (error) {
-      console.error('Error logging in:', error);
+      console.error('Error logging in:', error);  // Logs any login error
     }
   };
 
+  // JSX for rendering the login form
   return (
-    <div className="form-container">
-      <div className="form-title">Login</div>
-      <form onSubmit={handleLogin}> {/* Agregar el formulario */}
+    <div className="form-container">  {/* Container for the form */}
+      <div className="form-title">Login</div>  {/* Form title */}
+      <form onSubmit={handleLogin}>  {/* Form element with onSubmit handler */}
+        {/* Email input field */}
         <input
           type="text"
           placeholder="Email"
@@ -35,6 +39,7 @@ const LoginForm = () => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
+        {/* Password input field */}
         <input
           type="password"
           placeholder="Password"
@@ -42,10 +47,10 @@ const LoginForm = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit" className="form-button"> {/* Agregar el botón de tipo 'submit' */}
-          Login
-        </button>
+        {/* Submit button for the form */}
+        <button type="submit" className="form-button">Login</button>
       </form>
+      {/* Link to navigate to the SignUp page */}
       <div className="signup-link">
         You don't have an account?{' '}
         <span onClick={() => navigate('/CreateAccount')} className="signup-link-text">
@@ -56,4 +61,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default LoginForm;  // Export LoginForm for use in other parts of the application
