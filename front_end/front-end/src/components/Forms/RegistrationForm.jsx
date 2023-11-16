@@ -1,51 +1,49 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
-import './style.css';
+import React, { useState } from 'react';  // Importing React and useState hook from React
+import { useNavigate } from 'react-router-dom';  // Importing useNavigate for navigation
+import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';  // Importing authentication methods from Firebase
+import './style.css';  // Importing CSS for styling
 
+// Define RegistrationForm as a functional component
 const RegistrationForm = () => {
-  const navigate = useNavigate();
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const navigate = useNavigate();  // Initializing navigate for programmatic navigation
+  const [firstName, setFirstName] = useState('');  // State for storing the first name
+  const [lastName, setLastName] = useState('');  // State for storing the last name
+  const [email, setEmail] = useState('');  // State for storing the email
+  const [password, setPassword] = useState('');  // State for storing the password
 
+  // Function to handle user registration
   const handleRegistration = async () => {
     try {
-      const auth = getAuth();
+      const auth = getAuth();  // Getting Firebase auth instance
 
-      // Crea un objeto con los datos del usuario
+      // Creating an object with user data
       const userData = {
         email: email,
         password: password,
         displayName: firstName + ' ' + lastName,
       };
 
-      // Registra al usuario utilizando Firebase
+      // Registering the user using Firebase authentication
       await createUserWithEmailAndPassword(auth, userData.email, userData.password);
 
-      // Ahora el usuario está registrado y puede iniciar sesión
-
-      // También puedes iniciar sesión automáticamente al usuario aquí si lo deseas
-
-      navigate('/TestProvider'); // Redirige al usuario a la página de TestProvider
+      // Navigates to TestProvider page after successful registration
+      navigate('/TestProvider'); 
     } catch (error) {
-      console.error('Error registering:', error);
+      console.error('Error registering:', error);  // Logging any registration error
     }
   };
 
+  // JSX for rendering the registration form
   return (
-    <div className="form-container">
-      <div className="form-title">Create Account</div>
-
+    <div className="form-container">  {/* Container for the form */}
+      <div className="form-title">Create Account</div>  {/* Form title */}
+      {/* Input fields for first name, last name, email, and password */}
       <input
         type="text"
         placeholder="First Name"
         className="form-input_1"
         value={firstName}
         onChange={(e) => setFirstName(e.target.value)}
-
-        
       />
       <input
         type="text"
@@ -68,7 +66,7 @@ const RegistrationForm = () => {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-
+      {/* Button to submit the registration form */}
       <button className="form-button" onClick={handleRegistration}>
         Register Now
       </button>
@@ -76,4 +74,4 @@ const RegistrationForm = () => {
   );
 };
 
-export default RegistrationForm;
+export default RegistrationForm;  // Exporting RegistrationForm for use in other parts of the application
